@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.example.comparecalculator.R
@@ -37,14 +36,6 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             buttonDel,
             buttonNext
         ) = createRefs()
-
-        val horizontalChain = createHorizontalChain(
-            button7,
-            button8,
-            button9,
-            buttonDel,
-            chainStyle = ChainStyle.Spread
-        )
 
         Button(
             modifier = Modifier
