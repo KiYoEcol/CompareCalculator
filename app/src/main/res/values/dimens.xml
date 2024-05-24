@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="font_size_discount">32sp</dimen>
+    <dimen name="font_size_number_display">24sp</dimen>
+    <dimen name="font_size_result_number_display">28sp</dimen>
+    <dimen name="font_size_icon_bottom">16sp</dimen>
+    <dimen name="space_result_component_top">36dp</dimen>
+    <dimen name="space_result_component_between_discount_and_number_display">24dp</dimen>
+    <dimen name="space_result_component_between_number_displays">36dp</dimen>
+    <dimen name="space_result_component_between_number_display_and_result_number_display">36dp</dimen>
+    <dimen name="space_result_component_between_result_number_display_and_delete">36dp</dimen>
+    <dimen name="space_result_component_bottom">16dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+</resources>
