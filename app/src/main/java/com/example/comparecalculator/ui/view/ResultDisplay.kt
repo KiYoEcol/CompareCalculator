@@ -1,4 +1,4 @@
-package com.example.comparecalculator.ui.component
+package com.example.comparecalculator.ui.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
