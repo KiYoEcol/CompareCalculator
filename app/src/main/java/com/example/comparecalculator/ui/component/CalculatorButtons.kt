@@ -8,15 +8,19 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.example.comparecalculator.R
+import com.example.comparecalculator.ui.theme.CompareCalculatorTheme
 
 @Composable
 fun CalculatorButtons(modifier: Modifier = Modifier) {
@@ -49,7 +53,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "7")
+            Text(
+                text = "7",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -63,7 +71,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "8")
+            Text(
+                text = "8",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -77,7 +89,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "9")
+            Text(
+                text = "9",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -93,7 +109,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "Del")
+            Text(
+                text = "Del",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -108,7 +128,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "4")
+            Text(
+                text = "4",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -123,7 +147,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "5")
+            Text(
+                text = "5",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -138,7 +166,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "6")
+            Text(
+                text = "6",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -153,7 +185,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "1")
+            Text(
+                text = "1",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -168,7 +204,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "2")
+            Text(
+                text = "2",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -183,7 +223,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "3")
+            Text(
+                text = "3",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -200,7 +244,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "Next")
+            Text(
+                text = "Next",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -217,7 +265,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = "0")
+            Text(
+                text = "0",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
         Button(
             modifier = Modifier
@@ -232,7 +284,11 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(text = ".")
+            Text(
+                text = ".",
+                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
+                color = MaterialTheme.colorScheme.onSurface
+            )
         }
     }
 }
