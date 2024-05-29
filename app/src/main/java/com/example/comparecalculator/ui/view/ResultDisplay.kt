@@ -1,6 +1,7 @@
 package com.example.comparecalculator.ui.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,8 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
@@ -142,7 +141,7 @@ fun ResultComponent(
             )
         }
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_discount_and_number_display)))
-        NumberDisplayText(text = textNumberDisplayPrice1)
+        NumberDisplayText(text = textNumberDisplayPrice1, borderColor = colorResource(id = R.color.red300))
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_number_displays)))
         NumberDisplayText(text = "2")
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_number_display_and_result_number_display)))
@@ -163,17 +162,17 @@ fun ResultComponent(
 }
 
 @Composable
-fun NumberDisplayText(modifier: Modifier = Modifier, text: String = "") {
+fun NumberDisplayText(
+    modifier: Modifier = Modifier,
+    text: String = "",
+    borderColor: Color = Color.White
+) {
     val scrollState = rememberScrollState()
     Text(
         modifier = modifier
             .fillMaxWidth()
-            .drawBehind {
-                drawRoundRect(
-                    color = Color.White,
-                    cornerRadius = CornerRadius(8f, 8f)
-                )
-            }
+            .border(width = 3.dp, color = borderColor, shape = RoundedCornerShape(8.dp))
+            .background(color = Color.White, shape = RoundedCornerShape(8.dp))
             .padding(8.dp)
             .horizontalScroll(scrollState),
         text = text,
