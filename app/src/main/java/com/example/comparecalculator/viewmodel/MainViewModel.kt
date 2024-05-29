@@ -1,4 +1,4 @@
-package com.example.comparecalculator.ui.viewmodel
+package com.example.comparecalculator.viewmodel
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

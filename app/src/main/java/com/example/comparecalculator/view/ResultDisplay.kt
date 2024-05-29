@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comparecalculator.R
-import com.example.comparecalculator.ui.viewmodel.MainViewModel
+import com.example.comparecalculator.viewmodel.MainViewModel
 
 @Composable
 fun ResultDisplay(
