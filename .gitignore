@@ -1,4 +1,3 @@
-*.iml
 .gradle
 /local.properties
 /.idea/caches
@@ -7,9 +6,65 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-.DS_Store
 /build
 /captures
 .externalNativeBuild
 .cxx
+
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (SDK path, etc.)
 local.properties
+
+# Log and report files
+*.log
+
+# Android Studio files
+.idea/
+*.iml
+
+# Build output
+*/build/
+*.apk
+*.ap_
+
+# Gradle Wrapper files
+!gradle/wrapper/gradle-wrapper.jar
+
+# CMake output
+.cxx/
+.externalNativeBuild/
+cmake-build-debug/
+
+# NDK directories
+obj/
+libs/
+
+# IntelliJ IDEA files
+*.iws
+*.ipr
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Linux
+*~
+
+# Android specific
+/.cxx/
+
+# Proguard
+proguard/
+proguard-files/
+
+# Backup files
+*.bak
+*.old
+
+# Keystore files (if you have any)
+*.jks
