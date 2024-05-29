@@ -243,7 +243,7 @@ fun CalculatorButtons(
                     end.linkTo(parent.end)
                     height = Dimension.fillToConstraints
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onNextNumberDisplay() },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {

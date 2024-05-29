@@ -41,11 +41,18 @@ fun ResultDisplay(
     viewModel: MainViewModel
 ) {
     Row(modifier = modifier.fillMaxWidth()) {
+        val selectedIndexOfTextNumberDisplay by viewModel.selectedIndexOfTextNumberDisplay.collectAsStateWithLifecycle()
         val textNumberDisplayPrice1 by viewModel.textNumberDisplayPrice1.collectAsStateWithLifecycle()
+        val textNumberDisplayPrice2 by viewModel.textNumberDisplayAmount1.collectAsStateWithLifecycle()
+        val textNumberDisplayPrice3 by viewModel.textNumberDisplayPrice2.collectAsStateWithLifecycle()
+        val textNumberDisplayPrice4 by viewModel.textNumberDisplayAmount2.collectAsStateWithLifecycle()
 
         ResultComponent(
             modifier = Modifier.weight(1f),
-            textNumberDisplayPrice1 = textNumberDisplayPrice1
+            textNumberDisplayPrice = textNumberDisplayPrice1,
+            textBorderColorPrice = if (selectedIndexOfTextNumberDisplay == 1) colorResource(id = R.color.red300) else Color.White,
+            textNumberDisplayAmount = textNumberDisplayPrice2,
+            textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 2) colorResource(id = R.color.red300) else Color.White
         )
         Column(
             modifier = Modifier.weight(0.3f),
@@ -100,7 +107,10 @@ fun ResultDisplay(
 
         ResultComponent(
             modifier = Modifier.weight(1f),
-            textNumberDisplayPrice1 = textNumberDisplayPrice1
+            textNumberDisplayPrice = textNumberDisplayPrice3,
+            textBorderColorPrice = if (selectedIndexOfTextNumberDisplay == 3) colorResource(id = R.color.red300) else Color.White,
+            textNumberDisplayAmount = textNumberDisplayPrice4,
+            textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 4) colorResource(id = R.color.red300) else Color.White
         )
     }
 }
@@ -113,7 +123,10 @@ fun ResultDisplayPreview() {
 @Composable
 fun ResultComponent(
     modifier: Modifier = Modifier,
-    textNumberDisplayPrice1: String = ""
+    textNumberDisplayPrice: String = "",
+    textBorderColorPrice: Color = Color.White,
+    textNumberDisplayAmount: String = "",
+    textBorderColorAmount: Color = Color.White
 ) {
     Column(
         modifier = modifier
@@ -141,9 +154,15 @@ fun ResultComponent(
             )
         }
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_discount_and_number_display)))
-        NumberDisplayText(text = textNumberDisplayPrice1, borderColor = colorResource(id = R.color.red300))
+        NumberDisplayText(
+            text = textNumberDisplayPrice,
+            borderColor = textBorderColorPrice
+        )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_number_displays)))
-        NumberDisplayText(text = "2")
+        NumberDisplayText(
+            text = textNumberDisplayAmount,
+            borderColor = textBorderColorAmount
+        )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_number_display_and_result_number_display)))
         Text(
             text = "3",
@@ -185,5 +204,5 @@ fun NumberDisplayText(
 @Composable
 fun ResultComponentPreview() {
     val textNumberDisplayPrice1 = "1"
-    ResultComponent(textNumberDisplayPrice1 = textNumberDisplayPrice1)
+    ResultComponent(textNumberDisplayPrice = textNumberDisplayPrice1)
 }
