@@ -2,6 +2,7 @@ package com.example.comparecalculator.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -51,8 +52,10 @@ fun ResultDisplay(
             modifier = Modifier.weight(1f),
             textNumberDisplayPrice = textNumberDisplayPrice1,
             textBorderColorPrice = if (selectedIndexOfTextNumberDisplay == 1) colorResource(id = R.color.red300) else Color.White,
+            onClickTextNumberDisplayPrice = { viewModel.setSelectedIndexOfTextNumberDisplay(1) },
             textNumberDisplayAmount = textNumberDisplayPrice2,
-            textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 2) colorResource(id = R.color.red300) else Color.White
+            textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 2) colorResource(id = R.color.red300) else Color.White,
+            onClickTextNumberDisplayAmount = { viewModel.setSelectedIndexOfTextNumberDisplay(2) }
         )
         Column(
             modifier = Modifier.weight(0.3f),
@@ -109,8 +112,10 @@ fun ResultDisplay(
             modifier = Modifier.weight(1f),
             textNumberDisplayPrice = textNumberDisplayPrice3,
             textBorderColorPrice = if (selectedIndexOfTextNumberDisplay == 3) colorResource(id = R.color.red300) else Color.White,
+            onClickTextNumberDisplayPrice = { viewModel.setSelectedIndexOfTextNumberDisplay(3) },
             textNumberDisplayAmount = textNumberDisplayPrice4,
-            textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 4) colorResource(id = R.color.red300) else Color.White
+            textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 4) colorResource(id = R.color.red300) else Color.White,
+            onClickTextNumberDisplayAmount = { viewModel.setSelectedIndexOfTextNumberDisplay(4) }
         )
     }
 }
@@ -125,8 +130,10 @@ fun ResultComponent(
     modifier: Modifier = Modifier,
     textNumberDisplayPrice: String = "",
     textBorderColorPrice: Color = Color.White,
+    onClickTextNumberDisplayPrice: () -> Unit = {},
     textNumberDisplayAmount: String = "",
-    textBorderColorAmount: Color = Color.White
+    textBorderColorAmount: Color = Color.White,
+    onClickTextNumberDisplayAmount: () -> Unit = {}
 ) {
     Column(
         modifier = modifier
@@ -156,12 +163,14 @@ fun ResultComponent(
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_discount_and_number_display)))
         NumberDisplayText(
             text = textNumberDisplayPrice,
-            borderColor = textBorderColorPrice
+            borderColor = textBorderColorPrice,
+            onClick = onClickTextNumberDisplayPrice
         )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_number_displays)))
         NumberDisplayText(
             text = textNumberDisplayAmount,
-            borderColor = textBorderColorAmount
+            borderColor = textBorderColorAmount,
+            onClick = onClickTextNumberDisplayAmount
         )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_number_display_and_result_number_display)))
         Text(
@@ -184,7 +193,8 @@ fun ResultComponent(
 fun NumberDisplayText(
     modifier: Modifier = Modifier,
     text: String = "",
-    borderColor: Color = Color.White
+    borderColor: Color = Color.White,
+    onClick: () -> Unit = {}
 ) {
     val scrollState = rememberScrollState()
     Text(
@@ -193,7 +203,8 @@ fun NumberDisplayText(
             .border(width = 3.dp, color = borderColor, shape = RoundedCornerShape(8.dp))
             .background(color = Color.White, shape = RoundedCornerShape(8.dp))
             .padding(8.dp)
-            .horizontalScroll(scrollState),
+            .horizontalScroll(scrollState)
+            .clickable { onClick.invoke() },
         text = text,
         fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_number_display).toSp() },
         maxLines = 1

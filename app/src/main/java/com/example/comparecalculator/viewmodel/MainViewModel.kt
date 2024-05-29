@@ -24,6 +24,10 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun setSelectedIndexOfTextNumberDisplay(index:Int){
+        if (index in 1..4) _selectedIndexOfTextNumberDisplay.value = index else throw IndexOutOfBoundsException("The index must be between 1 and 4, inclusive.")
+    }
+
     private fun getSelectedNumberFlow(): MutableStateFlow<String> =
         when (_selectedIndexOfTextNumberDisplay.value) {
             1 -> _textNumberDisplayPrice1
