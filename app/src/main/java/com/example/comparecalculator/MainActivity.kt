@@ -14,8 +14,8 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.comparecalculator.ui.view.CalculatorButtons
-import com.example.comparecalculator.ui.view.ResultDisplay
+import com.example.comparecalculator.view.CalculatorButtons
+import com.example.comparecalculator.view.ResultDisplay
 import com.example.comparecalculator.ui.theme.CompareCalculatorTheme
 import com.example.comparecalculator.ui.viewmodel.MainViewModel
 
