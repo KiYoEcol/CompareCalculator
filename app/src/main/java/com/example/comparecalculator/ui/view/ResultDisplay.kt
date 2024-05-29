@@ -16,6 +16,7 @@ import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -29,12 +30,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.comparecalculator.R
+import com.example.comparecalculator.ui.viewmodel.MainViewModel
 
 @Composable
-fun ResultDisplay(modifier: Modifier = Modifier) {
+fun ResultDisplay(
+    modifier: Modifier = Modifier,
+    viewModel: MainViewModel
+) {
     Row(modifier = modifier.fillMaxWidth()) {
-        ResultComponent(modifier = Modifier.weight(1f))
+        val textNumberDisplayPrice1 by viewModel.textNumberDisplayPrice1.collectAsStateWithLifecycle()
+
+        ResultComponent(
+            modifier = Modifier.weight(1f),
+            textNumberDisplayPrice1 = textNumberDisplayPrice1
+        )
         Column(
             modifier = Modifier.weight(0.3f),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -85,7 +96,11 @@ fun ResultDisplay(modifier: Modifier = Modifier) {
                 fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_icon_bottom).toSp() }
             )
         }
-        ResultComponent(modifier = Modifier.weight(1f))
+
+        ResultComponent(
+            modifier = Modifier.weight(1f),
+            textNumberDisplayPrice1 = textNumberDisplayPrice1
+        )
     }
 }
 
@@ -95,7 +110,10 @@ fun ResultDisplayPreview() {
 }
 
 @Composable
-fun ResultComponent(modifier: Modifier = Modifier) {
+fun ResultComponent(
+    modifier: Modifier = Modifier,
+    textNumberDisplayPrice1: String = ""
+) {
     Column(
         modifier = modifier
             .background(
@@ -122,7 +140,7 @@ fun ResultComponent(modifier: Modifier = Modifier) {
             )
         }
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_discount_and_number_display)))
-        NumberDisplayText(text = "1")
+        NumberDisplayText(text = textNumberDisplayPrice1)
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_number_displays)))
         NumberDisplayText(text = "2")
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_number_display_and_result_number_display)))
@@ -163,5 +181,6 @@ fun NumberDisplayText(modifier: Modifier = Modifier, text: String = "") {
 @Preview
 @Composable
 fun ResultComponentPreview() {
-    ResultComponent()
+    val textNumberDisplayPrice1 = "1"
+    ResultComponent(textNumberDisplayPrice1 = textNumberDisplayPrice1)
 }

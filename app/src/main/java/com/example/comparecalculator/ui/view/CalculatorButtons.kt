@@ -20,9 +20,13 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.example.comparecalculator.R
+import com.example.comparecalculator.ui.viewmodel.MainViewModel
 
 @Composable
-fun CalculatorButtons(modifier: Modifier = Modifier) {
+fun CalculatorButtons(
+    modifier: Modifier = Modifier,
+    viewModel: MainViewModel
+) {
     ConstraintLayout(modifier = modifier.fillMaxWidth()) {
         val (
             button0,
@@ -48,7 +52,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     start.linkTo(parent.start)
                     end.linkTo(button8.start)
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit("7") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -66,7 +70,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     start.linkTo(button7.end)
                     end.linkTo(button9.start)
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit("8") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -84,7 +88,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     start.linkTo(button8.end)
                     end.linkTo(buttonDel.start)
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit("9") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -104,7 +108,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     end.linkTo(parent.end)
                     height = Dimension.fillToConstraints
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onClear() },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -123,7 +127,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     start.linkTo(parent.start)
                     end.linkTo(button5.start)
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit("4") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -142,7 +146,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     start.linkTo(button4.end)
                     end.linkTo(button6.start)
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit("5") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -161,7 +165,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     start.linkTo(button5.end)
                     end.linkTo(buttonDel.start)
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit("6") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -180,7 +184,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     start.linkTo(parent.start)
                     end.linkTo(button2.start)
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit("1") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -199,7 +203,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     start.linkTo(button1.end)
                     end.linkTo(button3.start)
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit("2") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -218,7 +222,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     start.linkTo(button2.end)
                     end.linkTo(buttonNext.start)
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit("3") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -260,7 +264,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     end.linkTo(button2.end)
                     width = Dimension.fillToConstraints
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit("0") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -279,7 +283,7 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
                     start.linkTo(button0.end)
                     end.linkTo(buttonNext.start)
                 },
-            onClick = { /*TODO*/ },
+            onClick = { viewModel.onDigit(".") },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
@@ -295,5 +299,6 @@ fun CalculatorButtons(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun CalculatorButtons2Preview() {
-    CalculatorButtons()
+    val viewModel = MainViewModel()
+    CalculatorButtons(viewModel = viewModel)
 }
