@@ -1,6 +1,7 @@
 package com.example.comparecalculator.ui.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
@@ -162,6 +164,7 @@ fun ResultComponent(
 
 @Composable
 fun NumberDisplayText(modifier: Modifier = Modifier, text: String = "") {
+    val scrollState = rememberScrollState()
     Text(
         modifier = modifier
             .fillMaxWidth()
@@ -171,7 +174,8 @@ fun NumberDisplayText(modifier: Modifier = Modifier, text: String = "") {
                     cornerRadius = CornerRadius(8f, 8f)
                 )
             }
-            .padding(8.dp),
+            .padding(8.dp)
+            .horizontalScroll(scrollState),
         text = text,
         fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_number_display).toSp() },
         maxLines = 1
