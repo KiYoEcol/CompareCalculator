@@ -44,18 +44,21 @@ fun ResultDisplay(
     Row(modifier = modifier.fillMaxWidth()) {
         val selectedIndexOfTextNumberDisplay by viewModel.selectedIndexOfTextNumberDisplay.collectAsStateWithLifecycle()
         val textNumberDisplayPrice1 by viewModel.textNumberDisplayPrice1.collectAsStateWithLifecycle()
-        val textNumberDisplayPrice2 by viewModel.textNumberDisplayAmount1.collectAsStateWithLifecycle()
-        val textNumberDisplayPrice3 by viewModel.textNumberDisplayPrice2.collectAsStateWithLifecycle()
-        val textNumberDisplayPrice4 by viewModel.textNumberDisplayAmount2.collectAsStateWithLifecycle()
+        val textNumberDisplayAmount1 by viewModel.textNumberDisplayAmount1.collectAsStateWithLifecycle()
+        val textNumberDisplayResult1 by viewModel.textNumberDisplayResult1.collectAsStateWithLifecycle()
+        val textNumberDisplayPrice2 by viewModel.textNumberDisplayPrice2.collectAsStateWithLifecycle()
+        val textNumberDisplayAmount2 by viewModel.textNumberDisplayAmount2.collectAsStateWithLifecycle()
+        val textNumberDisplayResult2 by viewModel.textNumberDisplayResult2.collectAsStateWithLifecycle()
 
         ResultComponent(
             modifier = Modifier.weight(1f),
             textNumberDisplayPrice = textNumberDisplayPrice1,
             textBorderColorPrice = if (selectedIndexOfTextNumberDisplay == 1) colorResource(id = R.color.red300) else Color.White,
             onClickTextNumberDisplayPrice = { viewModel.setSelectedIndexOfTextNumberDisplay(1) },
-            textNumberDisplayAmount = textNumberDisplayPrice2,
+            textNumberDisplayAmount = textNumberDisplayAmount1,
             textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 2) colorResource(id = R.color.red300) else Color.White,
-            onClickTextNumberDisplayAmount = { viewModel.setSelectedIndexOfTextNumberDisplay(2) }
+            onClickTextNumberDisplayAmount = { viewModel.setSelectedIndexOfTextNumberDisplay(2) },
+            textNumberDisplayResult = textNumberDisplayResult1
         )
         Column(
             modifier = Modifier.weight(0.3f),
@@ -110,12 +113,13 @@ fun ResultDisplay(
 
         ResultComponent(
             modifier = Modifier.weight(1f),
-            textNumberDisplayPrice = textNumberDisplayPrice3,
+            textNumberDisplayPrice = textNumberDisplayPrice2,
             textBorderColorPrice = if (selectedIndexOfTextNumberDisplay == 3) colorResource(id = R.color.red300) else Color.White,
             onClickTextNumberDisplayPrice = { viewModel.setSelectedIndexOfTextNumberDisplay(3) },
-            textNumberDisplayAmount = textNumberDisplayPrice4,
+            textNumberDisplayAmount = textNumberDisplayAmount2,
             textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 4) colorResource(id = R.color.red300) else Color.White,
-            onClickTextNumberDisplayAmount = { viewModel.setSelectedIndexOfTextNumberDisplay(4) }
+            onClickTextNumberDisplayAmount = { viewModel.setSelectedIndexOfTextNumberDisplay(4) },
+            textNumberDisplayResult = textNumberDisplayResult2
         )
     }
 }
@@ -133,7 +137,8 @@ fun ResultComponent(
     onClickTextNumberDisplayPrice: () -> Unit = {},
     textNumberDisplayAmount: String = "",
     textBorderColorAmount: Color = Color.White,
-    onClickTextNumberDisplayAmount: () -> Unit = {}
+    onClickTextNumberDisplayAmount: () -> Unit = {},
+    textNumberDisplayResult: String = ""
 ) {
     Column(
         modifier = modifier
@@ -174,7 +179,7 @@ fun ResultComponent(
         )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_number_display_and_result_number_display)))
         Text(
-            text = "3",
+            text = textNumberDisplayResult,
             fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_result_number_display).toSp() },
             fontWeight = FontWeight.Bold,
             maxLines = 1
