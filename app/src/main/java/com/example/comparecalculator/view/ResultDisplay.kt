@@ -178,7 +178,9 @@ fun ResultComponent(
             onClick = onClickTextNumberDisplayAmount
         )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_number_display_and_result_number_display)))
+        val scrollState = rememberScrollState()
         Text(
+            modifier = Modifier.horizontalScroll(scrollState),
             text = textNumberDisplayResult,
             fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_result_number_display).toSp() },
             fontWeight = FontWeight.Bold,
