@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
@@ -46,9 +47,11 @@ fun ResultDisplay(
         val textNumberDisplayPrice1 by viewModel.textNumberDisplayPrice1.collectAsStateWithLifecycle()
         val textNumberDisplayAmount1 by viewModel.textNumberDisplayAmount1.collectAsStateWithLifecycle()
         val textNumberDisplayResult1 by viewModel.textNumberDisplayResult1.collectAsStateWithLifecycle()
+        val isGoodDeal1 by viewModel.isGoodDeal1.collectAsStateWithLifecycle()
         val textNumberDisplayPrice2 by viewModel.textNumberDisplayPrice2.collectAsStateWithLifecycle()
         val textNumberDisplayAmount2 by viewModel.textNumberDisplayAmount2.collectAsStateWithLifecycle()
         val textNumberDisplayResult2 by viewModel.textNumberDisplayResult2.collectAsStateWithLifecycle()
+        val isGoodDeal2 by viewModel.isGoodDeal2.collectAsStateWithLifecycle()
 
         ResultComponent(
             modifier = Modifier.weight(1f),
@@ -58,7 +61,8 @@ fun ResultDisplay(
             textNumberDisplayAmount = textNumberDisplayAmount1,
             textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 2) colorResource(id = R.color.red300) else Color.White,
             onClickTextNumberDisplayAmount = { viewModel.setSelectedIndexOfTextNumberDisplay(2) },
-            textNumberDisplayResult = textNumberDisplayResult1
+            textNumberDisplayResult = textNumberDisplayResult1,
+            isGoodDeal = isGoodDeal1
         )
         Column(
             modifier = Modifier.weight(0.3f),
@@ -119,7 +123,8 @@ fun ResultDisplay(
             textNumberDisplayAmount = textNumberDisplayAmount2,
             textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 4) colorResource(id = R.color.red300) else Color.White,
             onClickTextNumberDisplayAmount = { viewModel.setSelectedIndexOfTextNumberDisplay(4) },
-            textNumberDisplayResult = textNumberDisplayResult2
+            textNumberDisplayResult = textNumberDisplayResult2,
+            isGoodDeal = isGoodDeal2
         )
     }
 }
@@ -138,19 +143,23 @@ fun ResultComponent(
     textNumberDisplayAmount: String = "",
     textBorderColorAmount: Color = Color.White,
     onClickTextNumberDisplayAmount: () -> Unit = {},
-    textNumberDisplayResult: String = ""
+    textNumberDisplayResult: String = "",
+    isGoodDeal: Boolean = false
 ) {
     Column(
         modifier = modifier
             .background(
-                color = colorResource(id = R.color.gray500),
+                color = if (isGoodDeal) colorResource(id = R.color.orange500) else colorResource(id = R.color.gray500),
                 shape = RoundedCornerShape(8.dp)
             )
             .padding(horizontal = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_top)))
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.alpha(if (isGoodDeal) 1f else 0f),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
             Icon(
                 modifier = Modifier.size(dimensionResource(id = R.dimen.icon_size)),
                 imageVector = Icons.Rounded.CheckCircle,

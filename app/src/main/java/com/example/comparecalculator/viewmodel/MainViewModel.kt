@@ -28,6 +28,14 @@ class MainViewModel : ViewModel() {
         combine(_textNumberDisplayPrice2, _textNumberDisplayAmount2) { s1, s2 ->
             divideFromStringAsString(s1, s2)
         }.stateIn(CoroutineScope(Dispatchers.Main), SharingStarted.Eagerly, "")
+    val isGoodDeal1: StateFlow<Boolean> =
+        combine(textNumberDisplayResult1, textNumberDisplayResult2) { r1, r2 ->
+            compareResults(r1, r2)
+        }.stateIn(CoroutineScope(Dispatchers.Main), SharingStarted.Eagerly, false)
+    val isGoodDeal2: StateFlow<Boolean> =
+        combine(textNumberDisplayResult2, textNumberDisplayResult1) { r1, r2 ->
+            compareResults(r1, r2)
+        }.stateIn(CoroutineScope(Dispatchers.Main), SharingStarted.Eagerly, false)
 
     private fun divideFromStringAsString(
         numeratorString: String,
@@ -46,6 +54,15 @@ class MainViewModel : ViewModel() {
             }
         }
     }
+
+    private fun compareResults(resultString1: String, resultString2: String): Boolean =
+        if (resultString1 == "" || resultString2 == "") {
+            false
+        } else {
+            val result1 = resultString1.toDouble()
+            val result2 = resultString2.toDouble()
+            result1 <= result2
+        }
 
     fun onNextNumberDisplay() {
         if (_selectedIndexOfTextNumberDisplay.value < 4) {
