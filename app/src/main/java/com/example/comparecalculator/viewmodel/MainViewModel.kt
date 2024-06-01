@@ -109,7 +109,17 @@ class MainViewModel : ViewModel() {
         return displayNumber
     }
 
-    fun onClear() {
+    fun onClearSelectedTextNumberDisplay() {
         getSelectedNumberFlow().value = ""
+    }
+
+    fun onClearAll1() {
+        _textNumberDisplayPrice1.value = ""
+        _textNumberDisplayAmount1.value = ""
+    }
+
+    fun onClearAll2() {
+        _textNumberDisplayPrice2.value = ""
+        _textNumberDisplayAmount2.value = ""
     }
 }

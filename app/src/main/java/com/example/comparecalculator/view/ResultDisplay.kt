@@ -18,6 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -62,6 +63,7 @@ fun ResultDisplay(
             textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 2) colorResource(id = R.color.red300) else Color.White,
             onClickTextNumberDisplayAmount = { viewModel.setSelectedIndexOfTextNumberDisplay(2) },
             textNumberDisplayResult = textNumberDisplayResult1,
+            onClickDelete = { viewModel.onClearAll1() },
             isGoodDeal = isGoodDeal1
         )
         Column(
@@ -124,6 +126,7 @@ fun ResultDisplay(
             textBorderColorAmount = if (selectedIndexOfTextNumberDisplay == 4) colorResource(id = R.color.red300) else Color.White,
             onClickTextNumberDisplayAmount = { viewModel.setSelectedIndexOfTextNumberDisplay(4) },
             textNumberDisplayResult = textNumberDisplayResult2,
+            onClickDelete = { viewModel.onClearAll2() },
             isGoodDeal = isGoodDeal2
         )
     }
@@ -132,6 +135,8 @@ fun ResultDisplay(
 @Preview
 @Composable
 fun ResultDisplayPreview() {
+    val viewModel = MainViewModel()
+    ResultDisplay(viewModel = viewModel)
 }
 
 @Composable
@@ -144,6 +149,7 @@ fun ResultComponent(
     textBorderColorAmount: Color = Color.White,
     onClickTextNumberDisplayAmount: () -> Unit = {},
     textNumberDisplayResult: String = "",
+    onClickDelete: () -> Unit = {},
     isGoodDeal: Boolean = false
 ) {
     Column(
@@ -196,11 +202,15 @@ fun ResultComponent(
             maxLines = 1
         )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_between_result_number_display_and_delete)))
-        Icon(
-            modifier = Modifier.size(dimensionResource(id = R.dimen.icon_size)),
-            imageVector = Icons.Rounded.Delete,
-            contentDescription = ""
-        )
+        IconButton(
+            onClick = { onClickDelete.invoke() }
+        ) {
+            Icon(
+                modifier = Modifier.size(dimensionResource(id = R.dimen.icon_size)),
+                imageVector = Icons.Rounded.Delete,
+                contentDescription = ""
+            )
+        }
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_result_component_bottom)))
     }
 }
