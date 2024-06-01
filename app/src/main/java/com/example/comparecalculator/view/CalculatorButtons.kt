@@ -1,13 +1,19 @@
 package com.example.comparecalculator.view
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,8 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.example.comparecalculator.R
@@ -112,10 +120,11 @@ fun CalculatorButtons(
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(
-                text = "Del",
-                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
-                color = MaterialTheme.colorScheme.onSurface
+            Icon(
+                modifier = Modifier.size(48.dp),
+                painter = painterResource(id = R.drawable.backspace_24px),
+                contentDescription ="",
+                tint = MaterialTheme.colorScheme.onSurface
             )
         }
         Button(
@@ -247,11 +256,19 @@ fun CalculatorButtons(
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.gray500))
         ) {
-            Text(
-                text = "Next",
-                fontSize = with(LocalDensity.current) { dimensionResource(id = R.dimen.font_size_calculator_button).toSp() },
-                color = MaterialTheme.colorScheme.onSurface
-            )
+            Column {
+                Icon(
+                    modifier = Modifier.size(48.dp),
+                    imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                    contentDescription = "",
+                    tint = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = "次へ",
+                    fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
         }
         Button(
             modifier = Modifier
